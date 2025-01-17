@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bilet">
+          <Key>
+            <PropertyRef Name="bilet_id" />
+          </Key>
+          <Property Name="bilet_id" Type="int" Nullable="false" />
+          <Property Name="question_id" Type="int" />
+          <Property Name="num_ticket" Type="int" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="question_type" Type="varchar(max)" />
+          <Property Name="question" Type="varchar(max)" />
+          <Property Name="option1" Type="varchar(max)" />
+          <Property Name="option2" Type="varchar(max)" />
+          <Property Name="option3" Type="varchar(max)" />
+          <Property Name="option4" Type="varchar(max)" />
+          <Property Name="correct_answer" Type="int" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="study_group" Type="varchar(max)" />
+          <Property Name="full_name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TestingReports">
+          <Key>
+            <PropertyRef Name="test_id" />
+          </Key>
+          <Property Name="test_id" Type="int" Nullable="false" />
+          <Property Name="test_date" Type="date" />
+          <Property Name="student_id" Type="varchar" MaxLength="20" />
+          <Property Name="bilet_id" Type="int" />
+          <Property Name="answer" Type="int" />
+          <Property Name="testing_time" Type="int" />
+          <Property Name="total_questions" Type="int" />
+          <Property Name="correct_answers" Type="int" />
+          <Property Name="student_grade" Type="int" />
+        </EntityType>
+        <Association Name="FK__TestingRe__stude__693CA210">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="TestingReports" Type="Self.TestingReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="TestingReports">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bilet_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="question_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestingReports_Bilet">
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="0..1" />
+          <End Role="TestingReports" Type="Self.TestingReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilet">
+              <PropertyRef Name="bilet_id" />
+            </Principal>
+            <Dependent Role="TestingReports">
+              <PropertyRef Name="bilet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Bilet" EntityType="Self.Bilet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestingReports" EntityType="Self.TestingReports" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TestingRe__stude__693CA210" Association="Self.FK__TestingRe__stude__693CA210">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="TestingReports" EntitySet="TestingReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bilet_Questions" Association="Self.FK_Bilet_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestingReports_Bilet" Association="Self.FK_TestingReports_Bilet">
+            <End Role="Bilet" EntitySet="Bilet" />
+            <End Role="TestingReports" EntitySet="TestingReports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bilet">
+          <Key>
+            <PropertyRef Name="bilet_id" />
+          </Key>
+          <Property Name="bilet_id" Type="Int32" Nullable="false" />
+          <Property Name="question_id" Type="Int32" />
+          <Property Name="num_ticket" Type="Int32" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Bilet_Questions" FromRole="Bilet" ToRole="Questions" />
+          <NavigationProperty Name="TestingReports" Relationship="Self.FK_TestingReports_Bilet" FromRole="Bilet" ToRole="TestingReports" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="question_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="option1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="option2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="option3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="option4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="correct_answer" Type="Int32" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_Bilet_Questions" FromRole="Questions" ToRole="Bilet" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="student_id" />
+          </Key>
+          <Property Name="student_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="study_group" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TestingReports" Relationship="Self.FK__TestingRe__stude__693CA210" FromRole="Students" ToRole="TestingReports" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TestingReports">
+          <Key>
+            <PropertyRef Name="test_id" />
+          </Key>
+          <Property Name="test_id" Type="Int32" Nullable="false" />
+          <Property Name="test_date" Type="DateTime" Precision="0" />
+          <Property Name="student_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="bilet_id" Type="Int32" />
+          <Property Name="answer" Type="Int32" />
+          <Property Name="testing_time" Type="Int32" />
+          <Property Name="total_questions" Type="Int32" />
+          <Property Name="correct_answers" Type="Int32" />
+          <Property Name="student_grade" Type="Int32" />
+          <NavigationProperty Name="Bilet" Relationship="Self.FK_TestingReports_Bilet" FromRole="TestingReports" ToRole="Bilet" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__TestingRe__stude__693CA210" FromRole="TestingReports" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK_Bilet_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Bilet">
+              <PropertyRef Name="question_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestingReports_Bilet">
+          <End Role="Bilet" Type="Self.Bilet" Multiplicity="0..1" />
+          <End Role="TestingReports" Type="Self.TestingReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bilet">
+              <PropertyRef Name="bilet_id" />
+            </Principal>
+            <Dependent Role="TestingReports">
+              <PropertyRef Name="bilet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TestingRe__stude__693CA210">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="TestingReports" Type="Self.TestingReports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_id" />
+            </Principal>
+            <Dependent Role="TestingReports">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bilet" EntityType="Self.Bilet" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TestingReports" EntityType="Self.TestingReports" />
+          <AssociationSet Name="FK_Bilet_Questions" Association="Self.FK_Bilet_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Bilet" EntitySet="Bilet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestingReports_Bilet" Association="Self.FK_TestingReports_Bilet">
+            <End Role="Bilet" EntitySet="Bilet" />
+            <End Role="TestingReports" EntitySet="TestingReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TestingRe__stude__693CA210" Association="Self.FK__TestingRe__stude__693CA210">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="TestingReports" EntitySet="TestingReports" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Bilet">
+            <EntityTypeMapping TypeName="Model.Bilet">
+              <MappingFragment StoreEntitySet="Bilet">
+                <ScalarProperty Name="bilet_id" ColumnName="bilet_id" />
+                <ScalarProperty Name="question_id" ColumnName="question_id" />
+                <ScalarProperty Name="num_ticket" ColumnName="num_ticket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Model.Questions">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="question_type" ColumnName="question_type" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="option1" ColumnName="option1" />
+                <ScalarProperty Name="option2" ColumnName="option2" />
+                <ScalarProperty Name="option3" ColumnName="option3" />
+                <ScalarProperty Name="option4" ColumnName="option4" />
+                <ScalarProperty Name="correct_answer" ColumnName="correct_answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Model.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="study_group" ColumnName="study_group" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestingReports">
+            <EntityTypeMapping TypeName="Model.TestingReports">
+              <MappingFragment StoreEntitySet="TestingReports">
+                <ScalarProperty Name="test_id" ColumnName="test_id" />
+                <ScalarProperty Name="test_date" ColumnName="test_date" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="bilet_id" ColumnName="bilet_id" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="testing_time" ColumnName="testing_time" />
+                <ScalarProperty Name="total_questions" ColumnName="total_questions" />
+                <ScalarProperty Name="correct_answers" ColumnName="correct_answers" />
+                <ScalarProperty Name="student_grade" ColumnName="student_grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
