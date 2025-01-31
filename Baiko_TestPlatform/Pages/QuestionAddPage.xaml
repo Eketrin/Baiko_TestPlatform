@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Baiko_TestPlatform.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Добавление вопросов">
+      Title="Добавление и редактирование вопросов">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +18,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33.511"/>
@@ -35,19 +34,12 @@
         <TextBlock Text="Ответ #4" Grid.Row="5" Grid.Column="1" Height="21" Margin="0,0,3,0" />
         <TextBlock Text="Правильный ответ" Grid.Row="6" Grid.Column="1" Height="21" Margin="0,0,3,0"/>
 
-
-
         <TextBox ToolTip="Введите тип вопроса" x:Name="TextBoxtype" Text="{Binding question_type}" Grid.Row="0" Grid.Column="3" Margin="0,8,9,8" />
         <TextBox ToolTip="Введите текст вопроса" x:Name="TextBoxtext"  Text="{Binding question_text}" Grid.Row="1" Grid.Column="3" Margin="0,8,9,8" />
-
         <TextBox ToolTip="Введите ответ#1" x:Name="TextBox1"  Text="{Binding answer_option_1}" Grid.Row="2" Grid.Column="3" Margin="0,8,9,8" />
-
         <TextBox ToolTip="Введите ответ#2" x:Name="TextBox2"  Text="{Binding answer_option_2}" Grid.Row="3" Grid.Column="3" Margin="0,8,9,8" />
-
         <TextBox ToolTip="Введите ответ#3" x:Name="TextBox3"  Text="{Binding answer_option_3}" Grid.Row="4" Grid.Column="3" Margin="0,8,9,8" />
-
         <TextBox ToolTip="Введите ответ#4" x:Name="TextBox4"  Text="{Binding answer_option_4}" Grid.Row="5" Grid.Column="3" Margin="0,8,9,8" />
-
         <TextBox ToolTip="Введите номер верного ответа" x:Name="TextBoxCorrect"  Text="{Binding correct_answer}" Grid.Row="6" Grid.Column="3" Margin="0,8,9,8" />
         <Button Name="ButtonSave" Content="Сохранить" Grid.Row="7" Grid.Column="4" Click="ButtonSave_Click" />
 

@@ -24,8 +24,8 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" x:Name="Count" />
-        <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" x:Name="Grade_stu" Margin="107,0,0,0"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" x:Name="Count" Grid.ColumnSpan="3" />
+        <TextBlock Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" x:Name="Grade_stu" Grid.ColumnSpan="3"/>
         <Button x:Name="Save" Grid.Row="3" Grid.Column="2"   Content="Сохранить результат" Click="Save_Click" />
     </Grid>
 </Page>

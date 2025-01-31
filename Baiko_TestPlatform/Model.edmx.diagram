@@ -6,9 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="78006e99051c4c8998dc69aac36dfc25" Name="Diagram1">
         <EntityTypeShape EntityType="Model.questions" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.students" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.students" Width="1.5" PointX="5" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.test_reports" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="6.875" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__test_repo__quest__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__test_repo__stude__3B75D760" ManuallyRouted="false" />
       </Diagram>

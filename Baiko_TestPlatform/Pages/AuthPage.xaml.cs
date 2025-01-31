@@ -28,7 +28,7 @@ namespace Baiko_TestPlatform.Pages
         {
             if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
             {
-                MessageBox.Show("Введите логин или пароль!");
+                MessageBox.Show("Введите логин и пароль!");
                 return;
             }
             using (var db = new Entities())

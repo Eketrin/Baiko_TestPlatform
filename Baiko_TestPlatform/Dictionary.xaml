@@ -12,13 +12,14 @@
     </Style>
     <Style TargetType="TextBlock">
         <Setter Property="FontSize" Value="12pt"/>
+        <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="TextAlignment" Value="Center"/>
     </Style>
     <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="FontSize" Value="12pt"/>
     </Style>
-    <Style
-  TargetType="TextBox">
+    <Style TargetType="TextBox">
         <Setter Property="Height" Value="40"/>
         <Setter Property="Padding" Value="8"/>
         <Setter Property="FontFamily" Value="Tahoma"/>
@@ -32,6 +33,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
     <Style TargetType="ComboBox">
+        <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="FontSize" Value="12pt"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>

@@ -38,10 +38,6 @@
         <PasswordBox x:Name="PasswordBox" PasswordChar="*" ToolTip="Введите пароль"  Grid.Row="2" Grid.Column="3"  />
         <PasswordBox x:Name="PasswordBoxAgain" PasswordChar="*" ToolTip="Введите пароль еще раз" Grid.Row="3" Grid.Column="3" />
         <ComboBox x:Name="RoleBox" Background="Transparent" ToolTip="Выберите роль" Grid.Column="3"  Grid.Row="4"   />
-
-
-
-
         <Button Content="Отмена" x:Name="ButtonCancel" Click="ButtonCancel_Click"  ToolTip="Кнопка отмены" Grid.Row="6" Grid.Column="1"  />
         <Button Content="Регистрация" x:Name="ButtonRegister" Click="ButtonRegister_Click" ToolTip="Кнопка регистрации" Grid.Row="6" Grid.Column="3"  />
 
