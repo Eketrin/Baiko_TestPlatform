@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Baiko_TestPlatform"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Платформа для тестирования" Height="500" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Frame x:Name="MainFrame" Content="" Source="Pages/AuthPage.xaml" NavigationUIVisibility="Hidden" Grid.Row="1" Navigated="Frame_Navigated" Width="801"/>
+        <Button x:Name="Back" Content="Назад" HorizontalAlignment="Left" Width="84" Click="Back_Click" Margin="10,0,0,0" Height="36" VerticalAlignment="Center"/>
+
     </Grid>
 </Window>

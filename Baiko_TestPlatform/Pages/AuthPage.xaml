@@ -8,34 +8,34 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Авторизация">
 
-    <Grid Background="#FFB5D5CA">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="44"/>
-            <RowDefinition Height="44"/>
-            <RowDefinition Height="44"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="44"/>
-            <RowDefinition Height="44"/>
-            <RowDefinition Height="91*"/>
+            <RowDefinition Height="107*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="71*"/>
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="137*"/>
-            <ColumnDefinition Width="138"/>
-            <ColumnDefinition Width="240"/>
-            <ColumnDefinition Width="128"/>
-            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="125"/>
+            <ColumnDefinition Width="77"/>
+            <ColumnDefinition Width="48"/>
+            <ColumnDefinition Width="350*"/>
+            <ColumnDefinition Width="289*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Логин" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
 
-        <TextBlock Text="Логин или почта" Foreground="Gray" Name="txtHintLogin"  Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
-        <TextBox x:Name="TBoxLogin" TextChanged="TBoxLogin_TextChanged" ToolTip="Введите логин" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Background="Transparent" VerticalAlignment="Center" Height="40"/>
+        <Label Content="Логин" Grid.Row="1"  Grid.Column="1" />
+        <Label Content="Пароль" Grid.Row="3" Grid.Column="1"  />
 
-        <TextBlock Text="Пароль" Foreground="Gray" Name="txtHintPassword" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
-        <PasswordBox x:Name="TBoxPassword" PasswordChanged="TBoxPassword_PasswordChanged" ToolTip="Введите пароль" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Background="Transparent" VerticalAlignment="Center" Height="40"/>
+        <TextBox x:Name="TextBoxLogin" Grid.Column="3" Grid.Row="1" ToolTip="Введите логин" />
+        <PasswordBox x:Name="PasswordBox" PasswordChar="*" ToolTip="Введите пароль" Grid.Row="3" Grid.Column="3" />
 
-        <Label Content="Пароль" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
-        <Button Content="Вход" Grid.Column="2" Grid.Row="5" ToolTip="Нажмите, чтобы войти" Click="ButtonEnter_OnClick"/>
-        <Button Content="Регистрация" Grid.Column="2" Grid.Row="6" ToolTip="Нажмите, чтобы зарегистрироваться" Click="ButtonReg_Click"/>
+        <Button Content="Вход" x:Name="ButtonEnter" Click="ButtonEnter_Click"  ToolTip="Кнопка входа"  Grid.Row="5" Grid.Column="3" />
+        <Button Content="Регистрация" x:Name="ButtonRegister" Click="ButtonRegister_Click" ToolTip="Кнопка регистрации" Grid.Row="6" Grid.Column="3"  />
+
     </Grid>
 </Page>

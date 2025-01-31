@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace Baiko_TestPlatform.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для QuesAddPage.xaml
+    /// Логика взаимодействия для QuestionAddPage.xaml
     /// </summary>
-    public partial class QuesAddPage : Page
+    public partial class QuestionAddPage : Page
     {
         private questions _currentQuestion = new questions();
         private bool redact;
-        public QuesAddPage(questions selectedQuestion, bool flag)
+        public QuestionAddPage(questions selectedQuestion, bool flag)
         {
             InitializeComponent();
             if (selectedQuestion != null)
@@ -37,12 +37,16 @@ namespace Baiko_TestPlatform.Pages
         {
             if (redact == false)
             {
-                if (string.IsNullOrEmpty(TextBoxtype.Text) || string.IsNullOrEmpty(TextBoxtext.Text) || string.IsNullOrEmpty(TextBox1.Text) || string.IsNullOrEmpty(TextBox2.Text) || string.IsNullOrEmpty(TextBox3.Text) || string.IsNullOrEmpty(TextBox4.Text) || string.IsNullOrEmpty(TextBoxCorrect.Text))
+                if (string.IsNullOrEmpty(TextBoxtype.Text) || string.IsNullOrEmpty(TextBoxtext.Text) 
+                    || string.IsNullOrEmpty(TextBox1.Text) || string.IsNullOrEmpty(TextBox2.Text) 
+                    || string.IsNullOrEmpty(TextBox3.Text) || string.IsNullOrEmpty(TextBox4.Text) 
+                    || string.IsNullOrEmpty(TextBoxCorrect.Text))
                 {
                     MessageBox.Show("Заполните все вышеуказанные поля!");
                     return;
                 }
-                MessageBoxResult result = MessageBox.Show("Вы уверены что хотите Добавить эти данные?", "Подтвержение закрытия", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                MessageBoxResult result = MessageBox.Show("Вы уверены что хотите Добавить эти данные?", 
+                    "Подтвержение закрытия", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
                     Entities db = new Entities();
@@ -62,7 +66,6 @@ namespace Baiko_TestPlatform.Pages
                     db.SaveChanges();
                     MessageBox.Show("Вопрос Добавлен");
                     NavigationService.GoBack();
-
                 }
             }
             else
@@ -83,7 +86,6 @@ namespace Baiko_TestPlatform.Pages
                     errors.AppendLine("Укажите четвёртый ответ!");
                 if (string.IsNullOrWhiteSpace(Convert.ToString(_currentQuestion.correct_answer)))
                     errors.AppendLine("Укажите правильный номер ответа!");
-
                 if (errors.Length > 0)
                 {
                     MessageBox.Show(errors.ToString());
@@ -104,9 +106,6 @@ namespace Baiko_TestPlatform.Pages
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
-
-
-
         }
     }
 }

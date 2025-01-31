@@ -23,6 +23,83 @@ namespace Baiko_TestPlatform.Pages
         public RegPage()
         {
             InitializeComponent();
+            using (var db = new Entities())
+            {
+                RoleBox.ItemsSource = db.User.Select(x => x.Role).Distinct().ToList();
+            }
+            RoleBox.SelectedIndex = 0;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            TextBoxLogin.Text = string.Empty;
+            PasswordBox.Password = string.Empty;
+            PasswordBoxAgain.Password = string.Empty;
+            NavigationService.Navigate(new AuthPage());
+        }
+
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password) 
+                || string.IsNullOrEmpty(PasswordBoxAgain.Password))
+            {
+                MessageBox.Show("Заполните все поля!");
+                return;
+            }
+            using (var database = new Entities())
+            {
+                var user = database.User
+                    .AsNoTracking()
+                    .FirstOrDefault(u => u.Login == TextBoxLogin.Text);
+                if (user != null)
+                {
+                    MessageBox.Show("Такой логин уже существует");
+                    return;
+                }
+            }
+            if (PasswordBox.Password.Length >= 6)
+            {
+                bool en = true; // английская раскладка
+                bool number = false; // цифра
+                for (int i = 0; i < PasswordBox.Password.Length; i++) // перебираем символы
+                {
+                    if ((PasswordBox.Password[i] >= 'А' && PasswordBox.Password[i] <= 'Я') || (PasswordBox.Password[i] >= 'а' && PasswordBox.Password[i] <= 'я')) en = false; // если русская раскладка
+                    if (PasswordBox.Password[i] >= '0' && PasswordBox.Password[i] <= '9') number = true; // если цифры
+                }
+
+                if (en == false)
+                {
+                    MessageBox.Show("Доступна только английская раскладка");
+                    return;
+                } 
+
+                if (number == false)
+                {
+                    MessageBox.Show("Добавьте хотя бы одну цифру");
+                    return;
+                } 
+            }
+            else
+            {
+                MessageBox.Show("Пароль слишком короткий, минимум 6 символов");
+                return;
+            }
+
+            if (PasswordBox.Password != PasswordBoxAgain.Password)
+            {
+                MessageBox.Show("Пароли не соответствуют");
+
+                return;
+            }
+            Entities db = new Entities();
+            User userObject = new User
+            {
+                Login = TextBoxLogin.Text,
+                Password = PasswordBox.Password,
+                Role = RoleBox.Text
+            };
+            db.User.Add(userObject);
+            db.SaveChanges();
+            MessageBox.Show("Пользователь добавлен");
         }
     }
 }

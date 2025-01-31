@@ -79,14 +79,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Authorization.xaml.cs">
-      <DependentUpon>Authorization.xaml</DependentUpon>
+    <Compile Include="Pages\AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\FinalPage.xaml.cs">
       <DependentUpon>FinalPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\QuesAddPage.xaml.cs">
-      <DependentUpon>QuesAddPage.xaml</DependentUpon>
+    <Compile Include="Pages\QuestionAddPage.xaml.cs">
+      <DependentUpon>QuestionAddPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\QuestionPage.xaml.cs">
       <DependentUpon>QuestionPage.xaml</DependentUpon>
@@ -97,8 +97,8 @@
     <Compile Include="Pages\RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StudAddPage.xaml.cs">
-      <DependentUpon>StudAddPage.xaml</DependentUpon>
+    <Compile Include="Pages\StudentAddPage.xaml.cs">
+      <DependentUpon>StudentAddPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
@@ -140,10 +140,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Authorization.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,7 +148,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\QuesAddPage.xaml">
+    <Page Include="Pages\QuestionAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StudAddPage.xaml">
+    <Page Include="Pages\StudentAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,9 +186,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\AuthPage.xaml.cs">
-      <DependentUpon>AuthPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -20,6 +20,7 @@
     <Style
   TargetType="TextBox">
         <Setter Property="Height" Value="40"/>
+        <Setter Property="Padding" Value="8"/>
         <Setter Property="FontFamily" Value="Tahoma"/>
         <Setter Property="FontSize" Value="12pt"/>
         <Setter Property="Background" Value="#FFB5D5CA"/>

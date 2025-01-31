@@ -24,5 +24,32 @@ namespace Baiko_TestPlatform
         {
             InitializeComponent();
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Вы уверены что хотите закрыть приложение?",
+                "Подтвержение закрытия", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.No)
+                e.Cancel = true;
+        }
+
+        private void Frame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (!(e.Content is Page page)) return;
+            this.Title = $"Платформа для тестирования - {page.Title}";
+
+            if (page is Pages.AuthPage)
+            {
+                Back.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                Back.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack) MainFrame.GoBack();
+        }
     }
 }

@@ -24,14 +24,42 @@ namespace Baiko_TestPlatform.Pages
         {
             InitializeComponent();
         }
-        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(TextBoxLogin.Text) || string.IsNullOrEmpty(PasswordBox.Password))
+            {
+                MessageBox.Show("Введите логин или пароль!");
+                return;
+            }
+            using (var db = new Entities())
+            {
+                var user = db.User
+                    .AsNoTracking()
+                    .FirstOrDefault(u => u.Login == TextBoxLogin.Text && u.Password == PasswordBox.Password);
+                if (user == null)
+                {
+                    MessageBox.Show("Пользователь не найден");
+                    return;
+                }
 
+                switch (user.Role)
+                {
+                    case "Преподаватель":
+                        NavigationService?.Navigate(new TeacherPage());
+                        break;
+                    case "Студент":
+                        NavigationService?.Navigate(new StudentPage());
+                        break;
+
+                }
+                MessageBox.Show("Пользователь найден");
+            }
         }
 
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        private void ButtonRegister_Click(object sender, RoutedEventArgs e)
         {
-  
+            NavigationService.Navigate(new RegPage());
         }
+
     }
 }
