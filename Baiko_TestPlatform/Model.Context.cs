@@ -15,20 +15,26 @@ namespace Baiko_TestPlatform
     
     public partial class Entities : DbContext
     {
+        private static Entities _context;
         public Entities()
             : base("name=Entities")
         {
         }
-    
+        public static Entities GetContext()
+        {
+            if (_context == null)
+                _context = new Entities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bilet> Bilet { get; set; }
-        public virtual DbSet<Questions> Questions { get; set; }
-        public virtual DbSet<Students> Students { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TestingReports> TestingReports { get; set; }
+        public virtual DbSet<questions> questions { get; set; }
+        public virtual DbSet<students> students { get; set; }
+        public virtual DbSet<test_reports> test_reports { get; set; }
+        public virtual DbSet<User> User { get; set; }
     }
 }

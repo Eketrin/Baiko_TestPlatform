@@ -12,12 +12,11 @@ namespace Baiko_TestPlatform
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class User
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int Id_user { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
     }
 }

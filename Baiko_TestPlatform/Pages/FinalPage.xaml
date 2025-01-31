@@ -1,0 +1,31 @@
+﻿<Page x:Class="Baiko_TestPlatform.Pages.FinalPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Baiko_TestPlatform.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Результаты">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="92.953"/>
+            <ColumnDefinition Width="204.362"/>
+            <ColumnDefinition Width="102.685"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" x:Name="Count" />
+        <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" x:Name="Grade_stu" Margin="107,0,0,0"/>
+        <Button x:Name="Save" Grid.Row="3" Grid.Column="2"   Content="Сохранить результат" Click="Save_Click" />
+    </Grid>
+</Page>

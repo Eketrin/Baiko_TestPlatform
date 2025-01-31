@@ -12,19 +12,19 @@ namespace Baiko_TestPlatform
     using System;
     using System.Collections.Generic;
     
-    public partial class Students
+    public partial class students
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Students()
+        public students()
         {
-            this.TestingReports = new HashSet<TestingReports>();
+            this.test_reports = new HashSet<test_reports>();
         }
     
-        public string student_id { get; set; }
-        public string study_group { get; set; }
+        public int student_id { get; set; }
+        public string group_number { get; set; }
         public string full_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestingReports> TestingReports { get; set; }
+        public virtual ICollection<test_reports> test_reports { get; set; }
     }
 }

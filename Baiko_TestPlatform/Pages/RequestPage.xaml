@@ -1,0 +1,36 @@
+﻿<Page x:Class="Baiko_TestPlatform.Pages.RequestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Baiko_TestPlatform.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Результаты тестирования">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="173*"/>
+            <ColumnDefinition Width="27*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="377*"/>
+            <RowDefinition Height="73*"/>
+        </Grid.RowDefinitions>
+
+
+        <DataGrid Grid.Row="0" Name="DataGridRequest" AutoGenerateColumns="False" IsReadOnly="True" IsVisibleChanged="DataGridUser_IsVisibleChanged" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Дата тестирования" Binding="{Binding test_date}" Width="*"/>
+                <DataGridTextColumn Header="Студент" Binding="{Binding students.student_id}" Width="*"/>
+                <DataGridTextColumn Header="Длительность" Binding="{Binding test_duration_minutes}" Width="*"/>
+                <DataGridTextColumn Header="Количество вопросов" Binding="{Binding total_questions}" Width="*"/>
+                <DataGridTextColumn Header="Количество правильных" Binding="{Binding correct_answers}" Width="*"/>
+                <DataGridTextColumn Header="Оценка" Binding="{Binding student_grade}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="1" Name="ButtonDel" Content="Удалить"  Click="ButtonDel_Click" ToolTip="Удалить данные из базы" Grid.Column="1"/>
+
+    </Grid>
+</Page>
